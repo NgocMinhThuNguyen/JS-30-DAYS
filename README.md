@@ -41,3 +41,5 @@ const second = now.getSecond();
 ```
 
 - `setInterval(function, delay)`: used to repeatedly execute an action or call a function after a certain period of time.
+
+# DAY 3
