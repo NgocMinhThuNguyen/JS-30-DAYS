@@ -38,17 +38,75 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    for (let i=0; i< inventors.length; i++) {
+      if (inventors[i].year >= 1500 && inventors[i].year < 1600) {
+        console.log(inventors[i]);
+      }
+    }
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    let newInventors = []
+    for (let i=0; i<inventors.length; i++) {
+      inventorObject = {}
+      inventorObject.first = inventors[i].first;
+      inventorObject.last = inventors[i].last;
+      newInventors.push(inventorObject);
+    }
+    console.log(newInventors);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    inventors1 = [];
+    inventorsBirthdateSort = [];
+    for (let i=0; i<inventors.length; i++) {
+      inventors1.push(inventors[i].year);
+    }
+    inventors1.sort();
+    console.log(inventors1);
+
+    for (let i=0; i<inventors1.length; i++) {
+      for (let j=0; j<inventors.length; j++) {
+        if (inventors[j].year === inventors1[i]) {
+          inventorsBirthdateSort.push(inventors[j])
+        }
+      }
+    }
+    console.log(inventorsBirthdateSort);
+
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
 
     // 5. Sort the inventors by years lived
+    inventors2 = [];
+    for (let i=0; i<inventors.length; i++) {
+      inventorObject = {}
+      inventorObject.first = inventors[i].first;
+      inventorObject.last = inventors[i].last;
+      inventorObject.year = inventors[i].year;
+      inventorObject.passed = inventors[i].passed;
+
+      inventorObject.birthdate = inventors[i].passed - inventors[i].year;
+      inventors2.push(inventorObject);
+    }
+
+    inventors3 = [];
+    for (let i=0; i<inventors2.length; i++) {
+      inventors3.push(inventors2[i].birthdate);
+    }
+    inventors3.sort();
+
+    inventors4 = [];
+    for (let i=0; i<inventors2.length; i++) {
+      for (let j=0; j<inventors2.length; j++) {
+        if (inventors2[j].birthdate === inventors3[i]) {
+          inventors4.push(inventors2[j]);
+          delete inventors4[i].birthdate;
+        }
+      }
+    }
+    console.log(inventors4);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
